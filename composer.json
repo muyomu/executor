@@ -3,9 +3,10 @@
     "description": "The executor of muyomu framework",
     "type": "library",
     "license": "apache-2.0",
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Muyomu\\Executor\\": "src/"
+            "muyomu\\executor\\": "src/"
         }
     },
     "authors": [
