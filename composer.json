@@ -14,5 +14,7 @@
             "name": "mutian"
         }
     ],
-    "require": {}
+    "require": {
+        "muyomu/http": "1.0.5"
+    }
 }
