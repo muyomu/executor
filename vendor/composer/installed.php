@@ -3,7 +3,7 @@
         'name' => 'muyomu/executor',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '1bba2754612c6698419de24eb6ba3c72c967625c',
+        'reference' => '7f3b8b9f15ebde60e63183de353a43b714355911',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'muyomu/aop' => array(
-            'pretty_version' => 'v1.0.4',
-            'version' => '1.0.4.0',
-            'reference' => '159566b0b29d7ee411362d0c573a872fc17f1a8e',
+            'pretty_version' => 'v1.0.5',
+            'version' => '1.0.5.0',
+            'reference' => '78280b80b5e0b7d51ad1799240981565fedc630a',
             'type' => 'library',
             'install_path' => __DIR__ . '/../muyomu/aop',
             'aliases' => array(),
@@ -31,7 +31,7 @@
         'muyomu/executor' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '1bba2754612c6698419de24eb6ba3c72c967625c',
+            'reference' => '7f3b8b9f15ebde60e63183de353a43b714355911',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
