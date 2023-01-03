@@ -3,20 +3,17 @@
 namespace muyomu\aop;
 
 use Exception;
-use muyomu\aop\advice\FrameWork;
+use muyomu\aop\advice\AopClient;
 use muyomu\aop\advicetype\AfterAdvice;
 use muyomu\aop\advicetype\BeforeCatchAdvice;
 use muyomu\aop\advicetype\BeforeReturnAdvice;
-use muyomu\aop\advicetype\Hystrix;
 use muyomu\aop\advicetype\RoundAdvice;
 use muyomu\aop\exception\AopException;
 use muyomu\aop\utility\ReflectionUtility;
 use muyomu\log4p\Log4p;
-use ReflectionClass;
 use ReflectionException;
-use ReflectionMethod;
 
-class FrameWorkClient implements FrameWork
+class AopExecutor implements AopClient
 {
     private ReflectionUtility $reflectionUtility;
 
@@ -29,12 +26,11 @@ class FrameWorkClient implements FrameWork
     }
 
     /**
-     * @throws ReflectionException|AopException
+     * @throws AopException
+     * @throws ReflectionException
      */
-    public function aopExecutor(object $instance, ReflectionMethod $method, mixed $args): mixed
+    public function aopExecutor(object $instance, string $method, array $args): mixed
     {
-        $Hystrix = $method->getAttributes(Hystrix::class);
-
         $reflectionClass = $this->reflectionUtility->getReflectionClass($instance::class);
 
         $reflectionMethod = $this->reflectionUtility->getReflectionMethod($reflectionClass,$method);
@@ -88,16 +84,7 @@ class FrameWorkClient implements FrameWork
             if (isset($beforeCatchAdviceInstance)){
                 $beforeCatchAdviceInstance->beforeCatchAdvice();
             }
-            if(!empty($Hystrix)){
-                $advice = $Hystrix[0]->newInstance();
-                $adviceClass = $advice->getHystrixClassName();
-                $adviceClass_class = new ReflectionClass($adviceClass);
-                $adviceClass_instance = $adviceClass_class->newInstance();
-                $adviceClass_handle = $adviceClass_class->getMethod("getData");
-                return $adviceClass_handle->invoke($adviceClass_instance);
-            }else{
-                throw $exception;
-            }
+            throw new AopException();
         }
 
         here:
