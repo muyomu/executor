@@ -1,10 +1,10 @@
 <?php
 
-namespace muyomu\aop\advice;
+namespace muyomu\aop\client;
 
 use ReflectionMethod;
 
-interface FrameWork
+interface FrameClient
 {
     public function aopExecutor(object $instance, ReflectionMethod $method,mixed $args):mixed;
 }
